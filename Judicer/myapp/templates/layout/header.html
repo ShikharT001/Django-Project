@@ -1,5 +1,110 @@
 <style>
-    
+    /* Adjust navbar height and spacing for mobile */
+.navbar {
+  opacity: 0.9;
+}
+
+
+.navbar-collapse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #3e4149;
+  overflow-y: auto;
+}
+
+.navbar-toggler,
+.navbar-brand {
+  z-index: 1;
+}
+
+.navbar-brand {
+  font-size: 1.8em;
+  color: #f8d847;
+}
+
+.navbar-toggler {
+  background-color: #f3f3f3;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Search input */
+#searchid {
+  width: 100%;
+  max-width: 80%;
+  height: 40px;
+  background-color: #f3f3f3;
+  color: #3e4149;
+  border-radius: 10px;
+  border: none;
+  margin: 0.5rem 0;
+}
+
+#searchid[type='text'] {
+  padding-left: 20px;
+  font-weight: 400;
+}
+
+#searchid::placeholder {
+  text-align: center;
+  color: #3e4149;
+}
+
+/* Navbar links */
+.navbar-collapse .nav-link {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.navbar-collapse .nav-link:hover,
+.navbar-collapse .nav-link.active {
+  color: yellow;
+}
+
+.nav-item:not(:last-child) {
+  border-bottom: 1px solid gray;
+  padding: 0.2em 2em;
+}
+
+@media screen and (min-width: 768px) {
+  #searchid {
+    width: 40%;
+    height: 50px;
+  }
+
+  .nav-item:not(:last-child) {
+    padding: 0.5em 8em;
+  }
+
+  .navbar-collapse {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .navbar-collapse .nav-link {
+    font-size: 1em;
+    margin: 0;
+  }
+}
+
+
+
 .register-link .signup-btn{
     background: #f8d847;
     color: black;
@@ -7,6 +112,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .navbar-toggler{
+    background-color:#f8d847;
   }
 </style>
 <nav class="navbar fixed-top">

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       <p>${item.Release_date}</p>
                        </div> 
                        </div> `;
-                       
+              
 
         })
         

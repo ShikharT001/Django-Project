@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #111, #333);
+    color: white;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h1, h2 {
+    color: #f8d847;
+  }
+  
+  /* Register Form Styles */
+  .register-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .register-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .register-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .register-form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .register-form button {
+    background: #f8d847;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .register-form button:hover {
+    background: #e2b63c;
+  }
+  
+  /* Gaming Gallery Styles */
+  .gaming-gallery {
+    margin-top: 40px;
+  }
+  
+  .gaming-gallery .gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .game-image {
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .game-image:hover {
+    transform: perspective(1000px) rotateY(15deg) rotateX(-10deg);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+  }
+  

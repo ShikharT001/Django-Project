@@ -3,6 +3,7 @@
   opacity: 0.9;
 }
 
+
 .navbar-collapse {
   position: absolute;
   top: 0;
@@ -100,3 +101,5 @@
     margin: 0;
   }
 }
+
+

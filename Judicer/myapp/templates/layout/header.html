@@ -116,8 +116,42 @@
   .navbar-toggler{
     background-color:#f8d847;
   }
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+  }
+  .hidden {
+    transform: translateY(-100%);
+  }
+  
 </style>
-<nav class="navbar fixed-top">
+<script>
+  let lastScrollTop = 0;
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScrollTop) {
+    // Scrolling down
+    header.classList.add('hidden');
+  } else {
+    // Scrolling up
+    header.classList.remove('hidden');
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or at page top
+});
+
+</script>
+<nav class="navbar fixed-top" id="header">
   <div class="container-fluid">
       <a class="navbar-brand" href="#">Judicer</a>
       <input type="text" id="searchid" name="search" placeholder="Search">
@@ -140,7 +174,7 @@
                   <a class="nav-link" href="#">Pricing</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link disabled">Disabled</a>
+                  <a class="nav-link" href="#">Reviews</a>
               </li>
           </ul>
       </div>

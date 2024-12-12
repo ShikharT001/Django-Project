@@ -9,12 +9,12 @@
   </header>
   <main>
     <section class="register-form">
-      <h2>Register</h2>
-      <form id="registerForm" action="{% url 'register' %}" method="POST">
+      <h2>Login</h2>
+      <form id="loginForm" method="POST" action="{% url 'login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Register</button>
-        <a class="btn btn-default" style="color:white;" href="{% url 'login' %}">Already Have an Account</a>
+        <button type="submit">Login</button>
+        <a class="btn btn-default" style="color:white;" href="{% url 'register' %}">Create a new Account</a>
       </form>
     </section>
 

@@ -1,11 +1,10 @@
-import re
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
 # Create your views here.
 
 from django.http import HttpResponse
-from pyautogui import isValidKey
 
 def home(request):
     try:
@@ -16,25 +15,39 @@ def home(request):
 
 
 def register(request):
-    try:
-        if request.method == 'POST':
-            # username = request.POST.get('username')
-            form = UserCreationForm(request.POST)
-            if form.isValid():
-                user = form.save()
-                login(request,user)
-                return 'success'
-        else:
-            form = UserCreationForm()
-        return render(request,'register.html',{'form':form})
-    except Exception as e:
-        return HttpResponse(str(e))
+
+    if request.method == 'POST':
+        # username = request.POST.get('username')
+        form = UserCreationForm(request.POST)
+        if form.is_Valid():
+            user = form.save()
+            login(request,user)
+            return redirect('dashboard')
+    else:
+        init_data = {'username':'','email':'','password':''}
+        form = UserCreationForm(init_data)
+    return render(request,'register.html',{'form':form})
+   
 
 def login(request):
-    pass
+    
+    if request.method == 'POST':
+        # username = request.POST.get('username')
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_Valid():
+            login(request, user)
+            user = form.get_user()
+            return redirect('dashboard')
+    else:
+        init_data = {'username':'','password':''}
+        form = AuthenticationForm(initial=init_data)
+    return render(request,'login.html',{'form':form})
+
+
 
 def dashboard(request):
     pass
 
 def logout(request):
-    pass
+    logout(request)
+    return redirect('login')

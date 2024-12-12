@@ -104,9 +104,11 @@
       }
       
 </style>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 <section id="#about">
     
-    <marquee direction="left">
+    <marquee behavior="scroll" scrollamount="9" direction="right">
 <div class="card-container">
 <a href="https://www.mythrillfiction.com/the-dark-rider" alt="Mythrill" target="_blank">
     <div class="card">
@@ -153,4 +155,15 @@
 </div>
 
 </marquee>
+</section>
+
+<section class="gaming-gallery">
+  <h2 class="m-5">Gaming Highlights</h2>
+  <div class="gallery">
+    <div class="game-image" style="background-image: url('https://3.bp.blogspot.com/-jydtY1tAtMc/VZtg62bIzeI/AAAAAAAADv8/meH8LxYsp0A/s1600/gta_5_poster1.jpg');"></div>
+    <div class="game-image" style="background-image: url('https://m.media-amazon.com/images/I/616swVHnhHL.jpg');"></div>
+    <div class="game-image" style="background-image: url('https://valorantdiamond.com/wp-content/uploads/2022/04/059d233f-9d00-427c-b9ee-ac8206a1fcdc-1-651x1024.jpg');"></div>
+    <div class="game-image" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/d3686d181565445.651e128211ecc.png');"></div>
+    
+  </div>
 </section>

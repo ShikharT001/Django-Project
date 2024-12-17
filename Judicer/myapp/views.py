@@ -1,7 +1,8 @@
 
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth import login,logout
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from django.contrib.auth import authenticate,login, logout
+from django.contrib import messages
 # Create your views here.
 
 from django.http import HttpResponse
@@ -15,39 +16,40 @@ def home(request):
 
 
 def register(request):
-
     if request.method == 'POST':
-        # username = request.POST.get('username')
-        form = UserCreationForm(request.POST)
-        if form.is_Valid():
-            user = form.save()
-            login(request,user)
-            return redirect('dashboard')
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account created successflly!!")
+            return redirect('login')
+        else:
+            messages.error(request, "Invalid form data!!")
     else:
-        init_data = {'username':'','email':'','password':''}
-        form = UserCreationForm(init_data)
-    return render(request,'register.html',{'form':form})
-   
+        form = CustomUserCreationForm()
+    return render(request, 'register.html', {'form':form})
 
-def login(request):
-    
+def login_view(request):
     if request.method == 'POST':
-        # username = request.POST.get('username')
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_Valid():
-            login(request, user)
-            user = form.get_user()
-            return redirect('dashboard')
+        form = CustomAuthenticationForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "You are now logged in.")
+                return redirect('home')
+            else:
+                messages.error(request, "Invalid email or password.")
     else:
-        init_data = {'username':'','password':''}
-        form = AuthenticationForm(initial=init_data)
-    return render(request,'login.html',{'form':form})
+        form = CustomAuthenticationForm()
+    return render(request, 'login.html', {'form': form})
 
 
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You are now logged out.")
+    return redirect('login')
 
 def dashboard(request):
     pass
-
-def logout(request):
-    logout(request)
-    return redirect('login')

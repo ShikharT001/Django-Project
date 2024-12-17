@@ -1,7 +1,16 @@
-{% extends 'main.html' %}
-{% block content %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
 <div class="container">
   <header>
@@ -10,12 +19,13 @@
   <main>
     <section class="register-form">
       <h2>Login</h2>
-      <form id="loginForm" method="POST" action="{% url 'login' %}">
+      <form id="loginForm" method="POST" style="color:white;">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
-        <a class="btn btn-default" style="color:white;" href="{% url 'register' %}">Create a new Account</a>
       </form>
+      <a class="btn btn-default" style="color:white;" href="{% url 'register' %}">Create a new Account</a>
+      
     </section>
 
     <section class="gaming-gallery">
@@ -30,4 +40,5 @@
   </main>
 </div>
 <script src="{% static 'js/register.js' %}"></script>
-{% endblock %}
+</body>
+</html>

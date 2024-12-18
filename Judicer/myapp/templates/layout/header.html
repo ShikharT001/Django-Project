@@ -155,9 +155,12 @@ window.addEventListener('scroll', () => {
   <div class="container-fluid">
       <a class="navbar-brand" href="#">Judicer</a>
       <input type="text" id="searchid" name="search" placeholder="Search">
-
+      {% if user.is_authenticated %}
+        <li>Hello {{user}}</li>
+      {% else %}
+      
       <a class="register-link" href="/register"><button class="signup-btn">Signup</button></a>
-
+      {% endif %}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav5"
           aria-controls="navbarNav5" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
